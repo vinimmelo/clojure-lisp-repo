@@ -1,6 +1,9 @@
+
 (defparameter *small* 1)
 
 (defparameter *big* 100)
+
+(print "Hello World")
 
 (defun guess-my-number ()
     (ash (+ *small* *big*) -1))
@@ -18,4 +21,7 @@
     (defparameter *small* 1)
     (defparameter *big* 100)
     (guess-my-number))
+
+
+
 
