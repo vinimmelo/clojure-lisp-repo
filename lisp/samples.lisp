@@ -1,3 +1,6 @@
+;;;; Vinícius Melo
+;;;; Samples to training CL Language.
+
 (defun factorial (n)
   "Factorial function."
   (if (= n 0) 1
@@ -25,3 +28,17 @@
   (let ((name (read-line)))
     (format nil "Good to know you ~A~%" name)
     ))
+
+;; Unit Test Framework!
+(defun report-result (result form)
+  (format t "~:[FAIL~;pass~] ... ~a~%" result form))
+
+(defmacro check (&body forms)
+  `(progn
+     ,@(loop for f in forms collect `(report-result ,f ',f))))
+
+(defun test-+ ()
+  (check
+    (= (+ 1 2) 3)
+    (= (+ 1 2 3) 6)
+    (= (+ -1 -3) -4)))
